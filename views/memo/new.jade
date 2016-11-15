@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  .container
+    h1 메모 작성
+    form(action = (memo.name) ? "/memo/#{memo.id}?_method=PUT" : "/memo", method='POST')
+      .form-group
+        input.form-control(type='text', name='name', placeholder='메모 이름', value=memo.name)
+      .form-group
+        textarea.form-control(rows='5', name='content', placeholder='메모 내용')
+      button.btn.btn-primary(type='submit') 작성완료

@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  ul.list-group
+    each memo in memos
+      li.list-group-item
+        a(href='/memo/#{memo._id}') #{memo.name}
+        
+  a.btn.btn-info(href='/memo/new') 메모 작성

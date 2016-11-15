@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  .container
+    h1 메모 보기
+    hr
+    h3= memo.name
+    | 작성시간 : 
+    | #{memo.createdAt}
+    p
+    .well 
+      | #{memo.content}
+    p
+    a.btn.btn-success(href='/memo/#{memo._id}/edit') 메모 수정
+    a.btn.btn-danger(href='/memo/#{memo._id}?_method=DELETE') 메모 삭제
