@@ -24,7 +24,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-mongoose.connect('mongodb://test:test@ds019946.mlab.com:19946/test1');
+mongoose.connect('mongodb://case:case@ds155097.mlab.com:55097/project');
 mongoose.connection.on('error', console.log);
 
 // uncomment after placing your favicon in /public

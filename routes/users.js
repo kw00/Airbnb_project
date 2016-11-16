@@ -2,12 +2,43 @@ var express = require('express'),
     User = require('../models/User');
 var router = express.Router();
 
+function confirm(form){
+  var name = form.name || "";
+  var email = form.email || "";
+  name = name.trim();
+  email = email.trim();
+
+  if(!name){
+    return '이름을 입력해주세요.';
+  }
+  if(!email){
+    return '이메일을 입력해주세요.';
+  }
+  if(!form.password){
+    return '비밀번호을 입력해주세요.';
+  }
+  if(!form.password !== form.pwCheck){
+    return '비밀번호가 일치하지 않습니다.';
+  }
+  if(!form.password.length < 4){
+    return '비밀번호가 4글자 이상이어야 합니다.';
+  }
+  return null;
+}
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 router.post('/', function(req, res, next) {
+
+  var err = confirm(req.body);
+  if(err) {
+    req.flash('danger', err);
+    return res.redirect('back');                // 이전 회원가입 페이지로 이동
+  }
+
+
   User.findOne({email: req.body.email}, function(err, user) {
     if (err) {
       return next(err);
