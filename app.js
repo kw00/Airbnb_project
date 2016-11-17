@@ -55,11 +55,11 @@ app.use(function(req, res, next){
 
 configAuth(passport);
 
-routeAuth(app, passport);
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/memo', memo);
+
+routeAuth(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

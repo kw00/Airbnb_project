@@ -17,21 +17,26 @@ function confirm(form){
   if(!form.password){
     return '비밀번호을 입력해주세요.';
   }
-  if(!form.password !== form.pwCheck){
+  if(form.password !== form.pwCheck){
     return '비밀번호가 일치하지 않습니다.';
   }
-  if(!form.password.length < 4){
+  if(form.password.length < 4){
     return '비밀번호가 4글자 이상이어야 합니다.';
   }
   return null;
 }
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  User.findById(res.locals.currentUser.id, function(){
+    if(err){
+      return next(err);
+    }
+    res.render('users/progfile', {user: user});
+  });
 });
 
 router.post('/', function(req, res, next) {
-
   var err = confirm(req.body);
   if(err) {
     req.flash('danger', err);
