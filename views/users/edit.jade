@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 회원정보 수정
+    form(action='/users?_method=PUT', method='POST')
+      .form-group
+        label(for='email') Email address
+        input.form-control(type='email', id='email', name='email', placeholder='Email', value=user.email, readonly)
+      .form-group
+        label(for='password') 현재 Password
+        input.form-control(type='password', id='password', name='password', placeholder='현재 Password')
+      .form-group
+        label(for='newPassword') 변경할 Password
+        input.form-control(type='password', id='newPassword', name='newPassword', placeholder='변경할 Password')
+      .form-group
+        label(for='pwCheck') Password 확인
+        input.form-control(type='password', id='pwCheck', name='pwCheck', placeholder='변경할 Password 확인')
+      .form-group
+        label(for='name') Name
+        input.form-control(type='text', id='name', name='name', placeholder='Your name', value=user.name)
+      div.form-actions
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+        | 
+        button.btn.btn-primary(type='submit') 수정

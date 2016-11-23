@@ -14,6 +14,7 @@ var routeAuth = require('./routes/auth');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var posts = require('./routes/posts');
 var memo = require('./routes/memo');
 
 var mongoose = require('mongoose');
@@ -46,6 +47,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(function(req, res, next){
   console.log(req.user);
   res.locals.currentUser = req.user;
@@ -53,13 +55,16 @@ app.use(function(req, res, next){
   next();
 });
 
+app.locals.moment = require('moment');
+
 configAuth(passport);
+
+routeAuth(app, passport);
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/posts', posts);
 app.use('/memo', memo);
-
-routeAuth(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
