@@ -17,7 +17,10 @@ block content
       p
       button.btn.btn-lg.btn-primary.btn-block(type='submit') 로그인
       | 
+      a.btn.btn-info.btn-lg.btn-block(href='/auth/facebook')
+        i.fa.fa-facebook.fa-lg
+        | &nbsp; &nbsp;Signin with Facebook
       hr
-      a.btn.btn-default.btn-mini(href='/signup') 회원가입
+      a.btn.btn-default.btn-mini(href='/users/new') 회원가입
       | 
-      a.btn.btn-default.btn-mini.pwResetBtn(href='#') 비밀번호 찾기
+      a.btn.btn-default.btn-mini(href='/reset-password') 비밀번호 재설정

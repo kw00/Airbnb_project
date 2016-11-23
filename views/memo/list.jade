@@ -4,9 +4,15 @@ block content
   .container
     h1.page-header 메모장
 
-    ul.list-group
-      each memo in memos
-        li.list-group-item
-          a(href='/memo/#{memo._id}') #{memo.name}
+    table.table.table-bordered
+      thead
+        tr
+          th 메모명
+       tbody
+        each memo in memos
+          tr
+            td 
+              a(href='/memo/#{memo._id}') #{memo.name} 
+
         
     a.btn.btn-danger(href='/memo/new') 메모 작성

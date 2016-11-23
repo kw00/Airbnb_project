@@ -10,6 +10,8 @@
     .collapse.navbar-collapse#myNavbar
       ul.nav.navbar-nav
         li
+          a(href='/users') 관리 페이지
+        li
           a(href="/memo") 메모
         li
           a(href="/posts") 게시판
@@ -25,7 +27,7 @@
             a(href='/login') 로그인
         else
           li
-            a(href='/users') 프로필 수정
+            a(href='/users/#{currentUser._id}') 프로필 수정
           li
             a(href='/logout') 로그 아웃
 br

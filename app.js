@@ -4,26 +4,30 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-
-var flash = require('connect-flash');
 var session = require('express-session');
+var methodOverride = require('method-override');
+var flash = require('connect-flash');
+var mongoose = require('mongoose');
 var passport = require('passport');
 var configAuth = require('./config/auth');
-var routeAuth = require('./routes/auth');
 
-var index = require('./routes/index');
+var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 var memo = require('./routes/memo');
 
-var mongoose = require('mongoose');
+var routeAuth = require('./routes/auth');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+if (app.get('env') === 'development') {
+  app.locals.pretty = true;
+}
+app.locals.moment = require('moment');
+
 
 mongoose.connect('mongodb://case:case@ds155097.mlab.com:55097/project');
 mongoose.connection.on('error', console.log);
@@ -34,7 +38,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 
 app.use(session({
@@ -43,28 +46,26 @@ app.use(session({
   secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
 }));
 app.use(flash());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(path.join(__dirname, '/bower_components')));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(function(req, res, next){
-  console.log(req.user);
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
   next();
 });
 
-app.locals.moment = require('moment');
-
 configAuth(passport);
 
-routeAuth(app, passport);
-
-app.use('/', index);
+app.use('/', routes);
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/memo', memo);
+routeAuth(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -74,14 +75,27 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 module.exports = app;
