@@ -6,7 +6,7 @@
         span.icon-bar
         span.icon-bar
       a(href="http://localhost:3000")
-        img(src="./images/airbnb.png", width="30", height="30")
+        img(src="./images/airbnb.png", width="50", height="50")
     .collapse.navbar-collapse#myNavbar
       ul.nav.navbar-nav
         li
@@ -20,12 +20,12 @@
       ul.nav.navbar-nav.navbar-right
         if (!currentUser) 
           li
-            a(href='/signup') Sign Up
+            a(href='/signup') 회원가입
           li
-            a(href='/login') Log In
+            a(href='/login') 로그인
         else
           li
-            a(href='/users') Profile
+            a(href='/users') 프로필 수정
           li
-            a(href='/logout') Log out
+            a(href='/logout') 로그 아웃
 br
