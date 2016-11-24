@@ -9,6 +9,27 @@ block content
       span at #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
       | 
       | (조회수 #{post.read})
+      | 
+      a.btn.btn-default(href='/posts/#{post.id}/edit') 수정
+      a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
     p.well(style='white-space:pre;')= post.content
+    hr
+    each reply in replys
+      b #{reply.email}
+      | 
+      span at #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
+      p
+      .row
+        .col-md-11
+          p= reply.content
+        .col-md-1
+          a.btn.btn-danger.btn-block(href='/posts/#{reply.id}/reply?_method=DELETE') 삭제
+      hr
+    form(action="/posts/#{post.id}/reply", method='POST')
+      .row
+        .col-md-10.form-group
+          textarea.form-control(rows='1', name='reply')
+        .col-md-2
+          button.btn.btn-primary.btn-block(type='submit') 덧글 완료
     
     a.btn.btn-default(href='/posts') 목록
