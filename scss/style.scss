@@ -1,9 +1,11 @@
 body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-top: 30px;
   margin: 2%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  & > .main-content {
+    min-height: 400px;
+  }
 }
-
 a {
   color: #00B7FF;
 }
