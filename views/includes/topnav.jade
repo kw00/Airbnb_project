@@ -1,12 +1,12 @@
 .nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      button(type="button", class="navbar-toggle", data-toggle="collapse", data-target="#myNavbar")
+      button(type="button", class="navbar-toggle", data-toggle="collapse", data-target="#myNavbar", aria-expanded='false', aria-controls='navbar')
         span.icon-bar
         span.icon-bar
         span.icon-bar
       a(href="http://localhost:3000")
-        img(src="./images/airbnb.png", width="50", height="50")
+        img(src="./images/logo.png", width="50", height="50")
     .collapse.navbar-collapse#myNavbar
       ul.nav.navbar-nav
         li
@@ -14,9 +14,9 @@
         li
           a(href="/memo") 메모
         li
-          a(href="/posts") 게시판
+          a(href="/posts") 숙소 등록
         li
-          a(href="#") Page 2
+          a(href="/todos") 예약
         li
           a(href="#") Page 3
       ul.nav.navbar-nav.navbar-right

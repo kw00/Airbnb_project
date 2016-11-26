@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index');
 });
 
 router.get('/signup', function(req, res, next) {
