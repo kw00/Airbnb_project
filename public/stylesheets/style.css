@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .form-signin {
   width: 320px;
   height: 300px;
@@ -26,6 +27,8 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
+=======
+>>>>>>> 20651695c55ebd1c0bfa0259e0f7b8ff65711de3
 #main .spinner {
   display: none;
   width: 100%;
@@ -52,9 +55,11 @@
   display: block; }
 
 body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-top: 30px;
-  margin: 2%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  margin: 2%; }
+  body > .main-content {
+    min-height: 400px; }
 
 a {
   color: #00B7FF; }

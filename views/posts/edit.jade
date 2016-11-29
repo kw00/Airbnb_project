@@ -13,6 +13,7 @@ block content
         input.form-control(type='text', id='title', name='title', placeholder='title', value=post.title)
       .form-group
         label(for='content') 설명
+<<<<<<< HEAD
         textarea.form-control(id='content', rows='10', name='content', placeholder='content')= post.content
       .form-group
         label(for='city') 도시
@@ -29,6 +30,26 @@ block content
       .form-group
         label(for='rule') 이용 규칙
         textarea.form-control(id='rule', rows='3', name='rule', placeholder='rule')= post.rule                
+=======
+        textarea.form-control(id='content', rows='10', name='content', placeholder='content here')= post.content
+      .form-group
+        label(for='city') 도시
+        textarea.form-control(id='city', rows='1', name='city', placeholder='city here')= post.city
+      .form-group
+        label(for='address') 주소
+        textarea.form-control(id='address', rows='2', name='address', placeholder='address here')= post.address
+      .form-group
+        label(for='charge') 숙소 요금
+        textarea.form-control(id='charge', rows='1', name='charge', placeholder='charge here')= post.charge 
+      .form-group
+        label(for='facility') 편의 시설
+        textarea.form-control(id='facility', rows='1', name='facility', placeholder='facility here')= post.facility
+      .form-group
+        label(for='rule') 규칙
+        textarea.form-control(id='rule', rows='3', name='rule', placeholder='rule here')= post.rule       
+        
+
+>>>>>>> 20651695c55ebd1c0bfa0259e0f7b8ff65711de3
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
