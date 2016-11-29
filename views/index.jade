@@ -3,16 +3,20 @@ extends layout
 block content
   h1 에어비앤비와 함께 새로운 여행을 시작하세요.
   p 숙소, 트립, 장소 - 하나의 앱으로 모두 해결하세요.
-  
+
+  p
+
   .form
-    input.form-control(type='text', id='q', size=20, placeholder='Type your country')
+    input.form-control(type='text', id='q', size=20, placeholder='Type your country') 
     i.fa.fa-spin.fa-spinner
     ul.suggest-box
-      
+    p
+    a.btn.btn-info(href='/posts') 호스트 목록         
+    p
   .dummy
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit   esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
   script(src='/javascripts/autocomplete.js')
 
 
-  .intro
+  .jumbotron
 
