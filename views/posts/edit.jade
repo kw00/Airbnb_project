@@ -9,12 +9,26 @@ block content
 
     form(action = (post.id) ? "/posts/#{post.id}?_method=PUT" : "/posts", method='POST')
       .form-group
-        label(for='title') Title
+        label(for='title') 제목
         input.form-control(type='text', id='title', name='title', placeholder='title', value=post.title)
       .form-group
-        label(for='content') Content
-        textarea.form-control(id='content', rows='10', name='content', placeholder='content here')= post.content
-
+        label(for='content') 설명
+        textarea.form-control(id='content', rows='10', name='content', placeholder='content')= post.content
+      .form-group
+        label(for='city') 도시
+        input.form-control(type='text', id='city', name='city', placeholder='city')= post.city
+      .form-group
+        label(for='address') 주소
+        textarea.form-control(id='address', rows='3', name='address', placeholder='address')= post.address
+      .form-group
+        label(for='charge') 숙소 요금
+        input.form-control(type='text', id='charge', name='charge', placeholder='charge')= post.charge
+      .form-group
+        label(for='facility') 편의시설
+        textarea.form-control(id='facility', rows='3', name='facility', placeholder='facility')= post.facility
+      .form-group
+        label(for='rule') 이용 규칙
+        textarea.form-control(id='rule', rows='3', name='rule', placeholder='rule')= post.rule                
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
