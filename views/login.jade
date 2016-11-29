@@ -5,15 +5,15 @@ block content
     form.form-signin(action='/login', method='POST')
       .row
         .col-md-2
-          label(for='email') Email
-        .col-md-10
-          input(type='email', name='email', class='form-control', required, autofocus)
+          label(for='email')
+        .col-md-12
+          input(type='email', name='email', class='form-control', placeholder='Email address', required, autofocus)
       p
       .row
         .col-md-2
-          label(for='password') Password
-        .col-md-10
-          input(type='password', name='password', class='form-control', required, autofocus)
+          label(for='password')
+        .col-md-12
+          input(type='password', name='password', class='form-control', placeholder='Password', required, autofocus)
       p
       button.btn.btn-lg.btn-primary.btn-block(type='submit') 로그인
       | 
@@ -22,5 +22,3 @@ block content
         | &nbsp; &nbsp;Signin with Facebook
       hr
       a.btn.btn-default.btn-mini(href='/users/new') 회원가입
-      | 
-      a.btn.btn-default.btn-mini(href='/reset-password') 비밀번호 재설정

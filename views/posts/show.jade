@@ -12,7 +12,8 @@ block content
       | 
       a.btn.btn-default(href='/posts/#{post.id}/edit') 수정
       a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
-    p.well(style='white-space:pre;')= post.content
+    p.well(style='white-space:pre;')= post.content post.city
+    
     hr
     each reply in replys
       b #{reply.email}
