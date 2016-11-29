@@ -102,7 +102,7 @@ router.put('/:id', needAuth, function(req, res, next) {
         if (err) {
           return next(err);
         }
-        res.render('posts/view', {post: post});
+        res.render('posts/show', {post: post});
       });
     });
   });

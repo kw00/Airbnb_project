@@ -12,9 +12,16 @@ block content
       | 
       a.btn.btn-default(href='/posts/#{post.id}/edit') 수정
       a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
-    p.well(style='white-space:pre;')= post.content post.city
-    
+
+    ul
+      li 내용: #{post.content}
+      li 도시: #{post.city} 
+      li 주소: #{post.address} 
+      li 숙소요금: #{post.charge} 
+      li 편의시설: #{post.facility} 
+      li 이용규칙: #{post.rule}
     hr
+
     each reply in replys
       b #{reply.email}
       | 
