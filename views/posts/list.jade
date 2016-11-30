@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .container
-    h1.page-header 숙소 목록
+    h1.page-header 호스트 목록
     
     //| total #{pagination.numPosts} posts
     table.table.table-bordered
@@ -12,7 +12,7 @@ block content
           th 제목
           th 날짜
           th 조회수
-          th
+          th 기능
       tbody
         each post in posts
           tr
@@ -24,7 +24,7 @@ block content
             td
               a.btn.btn-xs.btn-default(data-id=post.id, class='delete') 삭제
 
-    a.btn.btn-danger(href='/posts/new') 글쓰기
+    a.btn.btn-danger(href='/posts/new') 호스트 시작하기
 
     form#deleteForm(style='display:none', method="POST")
             

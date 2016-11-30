@@ -14,11 +14,13 @@
         li
           a(href="/memo") 후기 게시판
         li
-          a(href="/todos") 예약
+          a(href="/todos") 할 일
       ul.nav.navbar-nav.navbar-right
         if (!currentUser) 
           li
             a(href="/posts/new") 호스팅 하기
+          li
+            a(href="/posts") 호스트 목록
           li
             a(href='/signup') 회원가입
           li
@@ -26,6 +28,8 @@
         else
           li
             a(href="/posts/new") 호스트
+          li
+            a(href="/posts") 호스트 목록
           li
             a(href='/users/#{currentUser._id}') 프로필 수정
           li
