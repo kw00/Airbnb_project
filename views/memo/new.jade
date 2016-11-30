@@ -5,7 +5,7 @@ block content
     h1 후기 작성
     form(action = (memo.name) ? "/memo/#{memo.id}?_method=PUT" : "/memo", method='POST')
       .form-group
-        input.form-control(type='text', name='name', placeholder='호스트명 or 숙소 이름', value=memo.name)
+        input.form-control(type='text', name='name', placeholder='호스트명 and 숙소 이름', value=memo.name)
       .form-group
         textarea.form-control(rows='5', name='content', placeholder='후기 내용 및 별점 (5개만점)')
       button.btn.btn-danger(type='submit') 작성완료
