@@ -22,8 +22,6 @@ block content
             td= moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')
             td= post.read
             td
-              a.btn.btn-xs.btn-default(href='/posts/#{post.id}/edit') 수정
-              | 
               a.btn.btn-xs.btn-default(data-id=post.id, class='delete') 삭제
 
     a.btn.btn-danger(href='/posts/new') 글쓰기

@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
     if(err) {
       return next(err);
     }
-    res.render('memo/show', {memo : memo});
+    res.render('memo/view', {memo : memo});
   });
 });
 
@@ -65,7 +65,7 @@ router.put('/:id', function(req, res, next) {
       if(err) {
         return next(err);
       }
-      res.render('memo/show', {memo : memo});
+      res.render('memo/view', {memo : memo});
     });
   });
 });
@@ -78,5 +78,6 @@ router.delete('/:id', function(req, res, next) {
     res.redirect('/memo');
   });
 });
+
 
 module.exports = router;

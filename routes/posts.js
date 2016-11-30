@@ -58,7 +58,7 @@ router.get('/:id', function(req, res, next) {
         if(err){
           return next(err);
         }
-        res.render('posts/show', {post: post, replys: replys});
+        res.render('posts/view', {post: post, replys: replys});
       });
     });
   });
@@ -102,7 +102,7 @@ router.put('/:id', needAuth, function(req, res, next) {
         if (err) {
           return next(err);
         }
-        res.render('posts/show', {post: post});
+        res.render('posts/view', {post: post});
       });
     });
   });

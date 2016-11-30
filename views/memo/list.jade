@@ -2,12 +2,12 @@ extends ../layout
 
 block content
   .container
-    h1.page-header 메모장
+    h1.page-header 후기 게시판
 
     table.table.table-bordered
       thead
         tr
-          th 메모 목록
+          th 후기 목록
        tbody
         each memo in memos
           tr
@@ -15,4 +15,4 @@ block content
               a(href='/memo/#{memo._id}') #{memo.name} 
 
         
-    a.btn.btn-danger(href='/memo/new') 메모 작성
+    a.btn.btn-danger(href='/memo/new') 후기 작성
