@@ -4,21 +4,20 @@ block content
   .container
     h1.page-header= post.title
     p
-      b by #{post.email}
+      b 작성자: #{post.email}
       | 
-      span at #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
+      span | 작성일: #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
       | 
       | (조회수 #{post.read})
       | 
       a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
+      
     
     ul
-        li 내용: #{post.content}
-        li 도시: #{post.city} 
-        li 주소: #{post.address} 
-        li 숙소요금: #{post.charge} 
-        li 편의시설: #{post.facility} 
-        li 이용규칙: #{post.rule}
+      li 설명: #{post.content}
+      li 도시: #{post.city} 
+      li 주소: #{post.address} 
+      li 숙소요금: #{post.charge} 
+      li 편의시설: #{post.facility} 
+      li 이용규칙: #{post.rule}
     hr
-
-    

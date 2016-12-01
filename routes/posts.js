@@ -34,6 +34,11 @@ router.post('/', needAuth, function(req, res, next) {
         password: req.body.password,
         title: req.body.title,
         content: req.body.content,
+        city: req.body.city,
+        address: req.body.address,
+        charge: req.body.charge,
+        facility: req.body.facility,
+        rule: req.body.rule,
         read: 0                                //조회수는 0으로 입력
     });
     newPost.save(function(err) {                //post를 DB에 저장

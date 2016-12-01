@@ -3,8 +3,8 @@ extends ../layout
 block hero-unit
   .host
     .container
-      h1 에어비앤비 호스트가 되어 회원님의 꿈을 실현하세요.
-      p 지역에 온 사람들을 환영해주고 이들이 집처럼 편안함을 느낄 수 있도록 도와주세요.
+      h2 에어비앤비 호스트가 되어 회원님의 꿈을 실현하세요.
+
 
 block content
   .container
@@ -16,29 +16,29 @@ block content
     form(action = (post.id) ? "/posts/#{post.id}?_method=PUT" : "/posts", method='POST')
       .form-group
         label(for='title') 제목
-        input.form-control(type='text', id='title', name='title', placeholder='title', value=post.title)
+        input.form-control(type='text', name='title', placeholder='title')
       .form-group
         label(for='content') 설명
-        textarea.form-control(id='content', rows='10', name='content', placeholder='content', value=post.content)
+        textarea.form-control(rows='10', name='content', placeholder='content')
       .form-group
         label(for='city') 도시
-        input.form-control(type='text', id='city', name='city', placeholder='city', value=post.city)
+        textarea.form-control(rows='1', name='city', placeholder='city')
       .form-group
         label(for='address') 주소
-        input.form-control(type='text', id='address', rows='3', name='address', placeholder='address', value=post.address)
+        textarea.form-control(rows='3', name='address', placeholder='address')
       .form-group
         label(for='charge') 숙소 요금
-        input.form-control(type='text', id='charge', name='charge', placeholder='charge', value=post.charge)
+        textarea.form-control(name='charge', placeholder='charge')
       .form-group
         label(for='facility') 편의시설
-        input.form-control(type='text', id='facility', rows='3', name='facility', placeholder='facility', value=post.facility)
+        textarea.form-control(rows='3', name='facility', placeholder='facility')
       .form-group
         label(for='rule') 이용 규칙
-        input.form-control(type='text', id='rule', rows='3', name='rule', placeholder='rule', value=post.rule)                
+        textarea.form-control(rows='3', name='rule', placeholder='rule')
+                   
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
         button.btn.btn-danger(type='submit') 완료
 
     
-
