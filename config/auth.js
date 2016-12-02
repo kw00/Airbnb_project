@@ -23,15 +23,12 @@ module.exports = function(passport) {
         if (err) {
           return done(err);
         }
-
         if (!user) {
           return done(null, false, req.flash('danger', '존재하지 않는 사용자입니다.'));
         }
-
         if (!user.validatePassword(password)) {
           return done(null, false, req.flash('danger', '비밀번호가 일치하지 않습니다.'));
         }
-
         return done(null, user, req.flash('success', '로그인되었습니다.'));
       });
     });
