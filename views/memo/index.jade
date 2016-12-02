@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 게시판
+  
+  table.table
+    tr
+      th 제목
+      th 작성자
+      th 댓글
+      th 작성일
+    each memo in memos
+      tr
+        td
+          a(href='/memo/#{memo.id}')= memo.title
+        td= memo.email
+        td= memo.numComment
+        td= moment(memo.createdAt).format('YYYY/MM/DD')
+
+
+  a.btn.btn-primary(href='/memo/new') 글작성
