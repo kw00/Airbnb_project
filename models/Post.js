@@ -3,9 +3,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var schema = new Schema({
-  email: {type: String, required: true, index: true, trim: true},       //작성자 email
+  email: {type: String, required: true, trim: true},       //작성자 email
   title: {type: String, required: true, trim: true},                                //타이틀
-  content: {type:String, required: true, trim: true},                                               //컨텐츠
+  content: {type:String, required: true, trim: true},
+  images: [String],                                               //컨텐츠
   city: {type:String},
   address: {type:String},
   charge: {type:String},
@@ -18,6 +19,6 @@ var schema = new Schema({
   toObject: {virtuals: true}
 });
 
-var Post = mongoose.model('Post', schema);
+var Post = mongoose.model('ImgPost', schema);
 
 module.exports = Post;

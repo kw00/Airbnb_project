@@ -1,8 +1,12 @@
 extends ../layout
 
 block content
-  h1 후기 게시판
+  .post
+    .container
+      h2 에어비앤비가 제공하는 꿈과 같은 장소에 회원님의 후기를 작성해주세요.
   
+  h1 후기 게시판
+
   table.table
     tr
       th 제목
@@ -16,6 +20,5 @@ block content
         td= memo.email
         td= memo.numComment
         td= moment(memo.createdAt).format('YYYY/MM/DD')
-
 
   a.btn.btn-primary(href='/memo/new') 글작성

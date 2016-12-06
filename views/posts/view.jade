@@ -11,7 +11,10 @@ block content
       | (조회수 #{post.read})
       | 
       a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
-      
+    
+    each img in post.images
+      img.img-rounded.img-responsive(src=img)
+
     ul
       li 설명: #{post.content}
       li 도시: #{post.city} 
@@ -20,7 +23,7 @@ block content
       li 편의시설: #{post.facility} 
       li 이용규칙: #{post.rule}
     hr
-
+    
     each reply in replys
       b #{reply.email}
       | 

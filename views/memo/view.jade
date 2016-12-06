@@ -4,6 +4,8 @@ block content
   h1= memo.title
   h3 by #{memo.email}
   .well= memo.content
+  a.btn.btn-danger(href='/memo/#{memo._id}?_method=DELETE') 후기 삭제
+  hr
   each img in memo.images
     img.img-rounded.img-responsive(src=img)
 

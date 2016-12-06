@@ -71,6 +71,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+
 router.post('/:id/comments', function(req, res, next) {
   var comment = new Comment({
     memo: req.params.id,
@@ -88,6 +89,15 @@ router.post('/:id/comments', function(req, res, next) {
       }
       res.redirect('/memo/' + req.params.id);
     });
+  });
+});
+
+router.delete('/:id', function(req, res, next) {
+  Memo.findOneAndRemove({_id: req.params.id}, function(err){
+    if(err) {
+      return next(err);
+    }
+    res.redirect('/memo');
   });
 });
 

@@ -1,8 +1,18 @@
 var express = require('express'),
     User = require('../models/User'),
     Post = require('../models/Post'),
+    multer  = require('multer'),
+    path = require('path'),
+    _ = require('lodash'),
+    fs = require('fs'),
+    upload = multer({ dest: 'tmp' }),
     Reply = require('../models/Reply');
 var router = express.Router();
+var mimetypes = {
+  "image/jpeg": "jpg",
+  "image/gif": "gif",
+  "image/png": "png"
+};
 
 function needAuth(req, res, next) {
   if (req.isAuthenticated()) {
@@ -28,7 +38,21 @@ router.get('/new', needAuth, function(req, res, next) {
                                                 // 자세한것은 이전 메모 만들기 참고
 });
 
-router.post('/', needAuth, function(req, res, next) {
+router.post('/', upload.array('photos'), function(req, res, next) {
+  var dest = path.join(__dirname, '../public/images/');
+  var images = [];
+  if (req.files && req.files.length > 0) {
+    _.each(req.files, function(file) {
+      var ext = mimetypes[file.mimetype];
+      if (!ext) {
+        return;
+      }
+      var filename = file.filename + "." + ext;
+      fs.renameSync(file.path, dest + filename);
+      images.push("/images/" + filename);
+    });
+  }
+
   var newPost = new Post({
         email: res.locals.currentUser.email,
         password: req.body.password,
@@ -41,13 +65,15 @@ router.post('/', needAuth, function(req, res, next) {
         rule: req.body.rule,
         read: 0                                //조회수는 0으로 입력
     });
+
     newPost.save(function(err) {                //post를 DB에 저장
       if (err) {
         return next(err);
       }
       res.redirect('/posts/' + newPost._id);                 //다그렸으면 완성된 게시물로 이동
-    });
+  });
 });
+
 
 router.get('/:id', function(req, res, next) {
   Post.findById({_id: req.params.id}, function(err, post) {     //request로 넘어온 id값으로 db검색
