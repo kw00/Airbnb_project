@@ -53,8 +53,9 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     });
   }
 
-  var newPost = new Post({
+  var post = new Post({
         email: res.locals.currentUser.email,
+        images: images,
         password: req.body.password,
         title: req.body.title,
         content: req.body.content,
@@ -66,11 +67,11 @@ router.post('/', upload.array('photos'), function(req, res, next) {
         read: 0                                //조회수는 0으로 입력
     });
 
-    newPost.save(function(err) {                //post를 DB에 저장
+    post.save(function(err) {                //post를 DB에 저장
       if (err) {
         return next(err);
       }
-      res.redirect('/posts/' + newPost._id);                 //다그렸으면 완성된 게시물로 이동
+      res.redirect('/posts/' + post._id);                 //다그렸으면 완성된 게시물로 이동
   });
 });
 
@@ -167,12 +168,12 @@ router.post('/:id/reply', needAuth, function(req, res, next) {
     if (err) {
       return next(err);
     }
-    var newReply = new Reply({
+    var reply = new Reply({
       post: post.id,
       email: res.locals.currentUser.email,
       content: req.body.reply
     });
-    newReply.save(function(err) {
+    reply.save(function(err) {
       if (err) {
         return next(err);
       }

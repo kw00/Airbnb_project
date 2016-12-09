@@ -11,7 +11,7 @@ block content
       | (조회수 #{post.read})
       | 
       a.btn.btn-default(href='/posts/#{post.id}?_method=DELETE') 삭제
-    
+    hr
     each img in post.images
       img.img-rounded.img-responsive(src=img)
 
@@ -38,8 +38,12 @@ block content
     form(action="/posts/#{post.id}/reply", method='POST')
       .row
         p (Checkin 날짜, Checkout 날짜, 숙박인원 순으로)
-        .col-md-10.form-group
-          textarea.form-control(rows='1', name='reply')
+        .col-md-3.form-group
+          textarea.form-control(rows='1', name='reply', placeholder='Checkin 날짜')
+        .col-md-3.form-group
+          textarea.form-control(rows='1', name='reply', placeholder='Checkout 날짜')
+        .col-md-3.form-group
+          textarea.form-control(rows='1', name='reply', placeholder='숙박인원')
         .col-md-2
           button.btn.btn-primary.btn-block(type='submit') 예약
     
